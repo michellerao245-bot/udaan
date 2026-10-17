@@ -1,0 +1,639 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --text: #6b6375;
+  --text-h: #08060d;
+  --bg: #fff;
+  --border: #e5e4e7;
+  --code-bg: #f4f3ec;
+  --accent: #aa3bff;
+  --accent-bg: rgba(170, 59, 255, 0.1);
+  --accent-border: rgba(170, 59, 255, 0.5);
+  --social-bg: rgba(244, 243, 236, 0.5);
+  --shadow:
+    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+
+  /* ===== Marico Brand Colors ===== */
+  --marico-blue: #1c4f9c;
+  --marico-blue-dark: #0e3d7a;
+  --marico-green: #6cbd45;
+  --marico-green-dark: #5ba83a;
+
+  /* ===== Colorful Palette ===== */
+  --grad-purple: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --grad-pink: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --grad-blue: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  --grad-green: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+  --grad-orange: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+  --grad-sunset: linear-gradient(135deg, #1c4f9c 0%, #5b3cc4 50%, #8b2fc9 100%);
+
+  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+
+  font: 18px/145% var(--sans);
+  letter-spacing: 0.18px;
+  color-scheme: light dark;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @media (max-width: 1024px) {
+    font-size: 16px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #9ca3af;
+    --text-h: #f3f4f6;
+    --bg: #16171d;
+    --border: #2e303a;
+    --code-bg: #1f2028;
+    --accent: #c084fc;
+    --accent-bg: rgba(192, 132, 252, 0.15);
+    --accent-border: rgba(192, 132, 252, 0.5);
+    --social-bg: rgba(47, 48, 58, 0.5);
+    --shadow:
+      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+  }
+
+  #social .button-icon {
+    filter: invert(1) brightness(2);
+  }
+}
+
+/* ==================== IMPORTANT FIXES ==================== */
+
+/* Body */
+body {
+  margin: 0;
+  min-height: 100svh;
+}
+
+/* #root - full width */
+#root {
+  width: 100%;
+  max-width: 100%;
+  min-height: 100svh;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+/* Headings */
+h1,
+h2 {
+  font-family: var(--heading);
+  font-weight: 500;
+  color: var(--text-h);
+}
+
+h1 {
+  font-size: 56px;
+  letter-spacing: -1.68px;
+  margin: 32px 0;
+  @media (max-width: 1024px) {
+    font-size: 36px;
+    margin: 20px 0;
+  }
+}
+
+h2 {
+  font-size: 24px;
+  line-height: 118%;
+  letter-spacing: -0.24px;
+  margin: 0 0 8px;
+  @media (max-width: 1024px) {
+    font-size: 20px;
+  }
+}
+
+p {
+  margin: 0;
+}
+
+code,
+.counter {
+  font-family: var(--mono);
+  display: inline-flex;
+  border-radius: 4px;
+  color: var(--text-h);
+}
+
+code {
+  font-size: 15px;
+  line-height: 135%;
+  padding: 4px 8px;
+  background: var(--code-bg);
+}
+
+/* ==================== CUSTOM UTILITIES ==================== */
+
+/* Marico color helpers */
+.bg-marico-blue { background-color: var(--marico-blue); }
+.bg-marico-blue-dark { background-color: var(--marico-blue-dark); }
+.bg-marico-green { background-color: var(--marico-green); }
+.bg-marico-green-dark { background-color: var(--marico-green-dark); }
+.text-marico-blue { color: var(--marico-blue); }
+.text-marico-green { color: var(--marico-green); }
+.border-marico-blue { border-color: var(--marico-blue); }
+
+/* Select dropdown clean look */
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231c4f9c' stroke-width='2'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1em;
+  padding-right: 2.5rem !important;
+}
+
+/* Input autofill fix */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #1f2937;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Remove tap highlight on mobile */
+input, select, button, a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Smooth scrollbar (Global) */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #5a67d8, #6b46c1);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* ============================================================
+   ⭐ NAYA ADDED BELOW — Sidebar, Login, Dropdowns ke liye
+   ============================================================ */
+
+/* ---------- Sidebar Thin Scrollbar ---------- */
+.sidebar-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+.sidebar-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.sidebar-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+.sidebar-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+/* ---------- Login Wave SVG gap fix ---------- */
+.login-wave {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-bottom: -1px;
+}
+
+/* ---------- Dropdown scale-in animation ---------- */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+.animate-scale-in {
+  animation: scaleIn 0.18s ease-out;
+  transform-origin: top right;
+}
+
+/* ---------- Slide in from right ---------- */
+@keyframes slideInRight {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+.animate-slide-in-right {
+  animation: slideInRight 0.3s ease-out;
+}
+
+/* ---------- Slide up ---------- */
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+.animate-slide-up {
+  animation: slideUp 0.3s ease-out;
+}
+
+/* ---------- Pulse badge ---------- */
+@keyframes pulseBadge {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 6px rgba(239, 68, 68, 0);
+  }
+}
+.animate-pulse-badge {
+  animation: pulseBadge 2s infinite;
+}
+
+/* ---------- Sidebar transition ---------- */
+.sidebar-transition {
+  transition: width 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ---------- Header shadow ---------- */
+.header-scrolled {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* ---------- Gradient backgrounds ---------- */
+.bg-gradient-marico {
+  background: linear-gradient(135deg, var(--marico-blue) 0%, var(--marico-blue-dark) 100%);
+}
+.bg-gradient-marico-green {
+  background: linear-gradient(135deg, var(--marico-green) 0%, var(--marico-green-dark) 100%);
+}
+.bg-gradient-sunset {
+  background: var(--grad-sunset);
+}
+.bg-gradient-purple {
+  background: var(--grad-purple);
+}
+.bg-gradient-pink {
+  background: var(--grad-pink);
+}
+.bg-gradient-blue {
+  background: var(--grad-blue);
+}
+.bg-gradient-green {
+  background: var(--grad-green);
+}
+
+/* ---------- Card hover lift ---------- */
+.hover-lift {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(28, 79, 156, 0.15);
+}
+
+/* ---------- Focus ring ---------- */
+.focus-marico:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #fff, 0 0 0 4px rgba(28, 79, 156, 0.4);
+}
+
+/* ---------- Text truncate multiline ---------- */
+.line-clamp-1 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ---------- Mobile dropdown full-width ---------- */
+@media (max-width: 640px) {
+  .mobile-dropdown-fix {
+    position: fixed !important;
+    left: 1rem;
+    right: 1rem;
+    width: auto !important;
+    max-width: none !important;
+  }
+}
+
+/* ---------- Print styles ---------- */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* ---------- Disable text selection on buttons ---------- */
+button, .btn {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* ---------- Smooth body scroll lock ---------- */
+body.sidebar-open {
+  overflow: hidden;
+}
+
+/* ---------- Higher z-index helpers ---------- */
+.z-sidebar { z-index: 50; }
+.z-header { z-index: 30; }
+.z-dropdown { z-index: 60; }
+.z-modal { z-index: 70; }
+.z-toast { z-index: 80; }
+
+/* ============================================================
+   🎨 COLORFUL ADDITIONS — OrderEntry, AddProduct, Dashboard ke liye
+   ============================================================ */
+
+/* ---------- Hide scrollbar (category chips ke liye) ---------- */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ---------- Animated gradient background ---------- */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.bg-animated-gradient {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+/* ---------- Glow effect (Confirm button) ---------- */
+.glow-green {
+  box-shadow: 0 0 20px rgba(34, 197, 94, 0.5);
+}
+.glow-green:hover {
+  box-shadow: 0 0 30px rgba(34, 197, 94, 0.8);
+}
+
+.glow-purple {
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
+}
+
+.glow-pink {
+  box-shadow: 0 0 20px rgba(236, 72, 153, 0.5);
+}
+
+/* ---------- Shine effect on hover ---------- */
+@keyframes shine {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+.shine-effect {
+  position: relative;
+  overflow: hidden;
+}
+.shine-effect::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: left 0.5s;
+}
+.shine-effect:hover::after {
+  left: 100%;
+}
+
+/* ---------- Bounce animation ---------- */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+.animate-bounce {
+  animation: bounce 1s ease infinite;
+}
+
+/* ---------- Wiggle animation ---------- */
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-3deg); }
+  75% { transform: rotate(3deg); }
+}
+.animate-wiggle {
+  animation: wiggle 0.5s ease-in-out;
+}
+
+/* ---------- Shake (for error) ---------- */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+.animate-shake {
+  animation: shake 0.3s ease-in-out;
+}
+
+/* ---------- Pop-in (for new items) ---------- */
+@keyframes popIn {
+  0% { transform: scale(0.5); opacity: 0; }
+  80% { transform: scale(1.05); }
+  100% { transform: scale(1); opacity: 1; }
+}
+.animate-pop-in {
+  animation: popIn 0.3s ease-out;
+}
+
+/* ---------- Rainbow border ---------- */
+.rainbow-border {
+  border: 2px solid;
+  border-image: linear-gradient(
+    45deg,
+    #ff6b6b, #feca57, #48dbfb, #1dd1a1, #f368e0
+  ) 1;
+}
+
+/* ---------- Neon text ---------- */
+.neon-text {
+  text-shadow:
+    0 0 5px currentColor,
+    0 0 10px currentColor,
+    0 0 20px currentColor;
+}
+
+/* ---------- Colorful card variants ---------- */
+.card-pink {
+  background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+}
+.card-blue {
+  background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+}
+.card-green {
+  background: linear-gradient(135deg, #d4fc79 0%, #96e6a1 100%);
+}
+.card-purple {
+  background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+}
+.card-orange {
+  background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+}
+
+/* ---------- Colored left borders (Product cards) ---------- */
+.border-l-rainbow-1 { border-left: 4px solid #ff6b6b; }
+.border-l-rainbow-2 { border-left: 4px solid #feca57; }
+.border-l-rainbow-3 { border-left: 4px solid #48dbfb; }
+.border-l-rainbow-4 { border-left: 4px solid #1dd1a1; }
+.border-l-rainbow-5 { border-left: 4px solid #f368e0; }
+.border-l-rainbow-6 { border-left: 4px solid #a29bfe; }
+
+/* ---------- Badge styles ---------- */
+.badge-new {
+  background: linear-gradient(135deg, #a855f7, #ec4899);
+  color: white;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.badge-scheme {
+  background: linear-gradient(135deg, #f59e0b, #ef4444);
+  color: white;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.badge-added {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+/* ---------- Floating summary bar ---------- */
+.floating-summary {
+  background: linear-gradient(135deg, #1c4f9c, #5b3cc4, #8b2fc9);
+  color: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(91, 60, 196, 0.4);
+}
+
+/* ---------- Confirm button gradient ---------- */
+.btn-confirm {
+  background: linear-gradient(135deg, #10b981 0%, #14b8a6 100%);
+  color: white;
+  font-weight: 700;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+  transition: all 0.2s ease;
+}
+.btn-confirm:hover:not(:disabled) {
+  background: linear-gradient(135deg, #059669 0%, #0d9488 100%);
+  box-shadow: 0 6px 25px rgba(16, 185, 129, 0.6);
+  transform: translateY(-1px);
+}
+.btn-confirm:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ---------- Qty +/- buttons ---------- */
+.btn-plus {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.4);
+  transition: all 0.15s ease;
+}
+.btn-plus:active {
+  transform: scale(0.9);
+}
+
+.btn-minus {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: white;
+  box-shadow: 0 2px 8px rgba(239, 68, 68, 0.4);
+  transition: all 0.15s ease;
+}
+.btn-minus:active {
+  transform: scale(0.9);
+}
+.btn-minus:disabled {
+  opacity: 0.3;
+}
+
+/* ---------- Header gradient (OrderEntry) ---------- */
+.header-gradient {
+  background: linear-gradient(135deg, #1c4f9c 0%, #5b3cc4 50%, #8b2fc9 100%);
+}
+
+/* ---------- Page background gradient ---------- */
+.page-bg-colorful {
+  background: linear-gradient(135deg, #f5f7fa 0%, #e0e7ff 50%, #fce7f3 100%);
+}
+
+/* ---------- Stat card gradients ---------- */
+.grad-emerald {
+  background: linear-gradient(135deg, #34d399, #059669);
+}
+.grad-orange {
+  background: linear-gradient(135deg, #fb923c, #dc2626);
+}
+.grad-cyan {
+  background: linear-gradient(135deg, #22d3ee, #2563eb);
+}
+.grad-purple {
+  background: linear-gradient(135deg, #a78bfa, #db2777);
+}
+
+/* ---------- Toast animation ---------- */
+@keyframes toastIn {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.animate-toast-in {
+  animation: toastIn 0.3s ease-out;
+}
